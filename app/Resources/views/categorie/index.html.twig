@@ -1,0 +1,43 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <h1>Categories list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td><a href="{{ path('admin_categorie_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
+                <td>{{ categorie.libelle }}</td>
+                <td>{{ categorie.description }}</td>
+                <td><img src="{{ categorie.image }}" alt="Chaussures femme" width='100px' height='100px'></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_categorie_show', { 'id': categorie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_categorie_edit', { 'id': categorie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_categorie_new') }}">Create a new categorie</a>
+        </li>
+    </ul>
+{% endblock %}

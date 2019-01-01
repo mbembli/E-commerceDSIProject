@@ -1,0 +1,87 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="container" >
+	<div class="row">
+		<div class='col-sm-6'>
+			<div class="w3-content w3-display-container">
+			  <img class="mySlides" src="{{ produit.imagePrin }}" width="100%px" height="500px">
+			  {% set foo = produit.imagesSec|split('**') %}
+			  <img class="mySlides" src="{{ foo[0] }}" width="100%px" height="500px">
+			  <img class="mySlides" src="{{ foo[1] }}" width="100%px" height="500px">
+
+			  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+			  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+			</div>
+
+		</div>
+
+		<div class='col-sm-6'>
+			
+			<h2>{{ produit.libellle }}</h2>
+			<b>Prix : {{ produit.prix }} TND</b><br><br>
+			<button type="button"  id="plus" class="btn btn-success">+</button>
+			<input type="text" name="qte" value="0" id="qte">
+			<button type="button" id="moin" class="btn btn-success">-</button><br>
+			<button onclick="addProduct({{produit.id}});" type="button" class="btn btn-primary">Ajouter au panier</button><br><br>
+			<h3><font color='green'>Mettez votre avis ici</font></h3>
+			<input class="rating" id="ratingv" type="hidden">
+			<input type="hidden" id="prodval" value="{{ produit.id }}">
+			<hr>
+			<div class="simple-rating star-rating">
+			  <i class="fa fa-star" data-rating="1"></i>
+			  <i class="fa fa-star-o" data-rating="2"></i>
+			  <i class="fa fa-star-o" data-rating="3"></i>
+			  <i class="fa fa-star-o" data-rating="4"></i>
+			  <i class="fa fa-star-o" data-rating="5"></i>
+			  <b>{{one}} Avis</b>
+			</div>
+
+			<div class="simple-rating star-rating">
+			  <i class="fa fa-star" data-rating="1"></i>
+			  <i class="fa fa-star" data-rating="2"></i>
+			  <i class="fa fa-star-o" data-rating="3"></i>
+			  <i class="fa fa-star-o" data-rating="4"></i>
+			  <i class="fa fa-star-o" data-rating="5"></i>
+			  <b>{{two}} Avis</b>
+			</div>
+
+			<div class="simple-rating star-rating">
+			  <i class="fa fa-star" data-rating="1"></i>
+			  <i class="fa fa-star" data-rating="2"></i>
+			  <i class="fa fa-star" data-rating="3"></i>
+			  <i class="fa fa-star-o" data-rating="4"></i>
+			  <i class="fa fa-star-o" data-rating="5"></i>
+			  <b>{{three}} Avis</b>
+			</div>
+
+			<div class="simple-rating star-rating">
+			  <i class="fa fa-star" data-rating="1"></i>
+			  <i class="fa fa-star" data-rating="2"></i>
+			  <i class="fa fa-star" data-rating="3"></i>
+			  <i class="fa fa-star" data-rating="4"></i>
+			  <i class="fa fa-star-o" data-rating="5"></i>
+			  <b>{{fours}} Avis</b>
+			</div>
+
+			<div class="simple-rating star-rating">
+			  <i class="fa fa-star" data-rating="1"></i>
+			  <i class="fa fa-star" data-rating="2"></i>
+			  <i class="fa fa-star" data-rating="3"></i>
+			  <i class="fa fa-star" data-rating="4"></i>
+			  <i class="fa fa-star" data-rating="5"></i>
+			  <b>{{five}} Avis</b>
+			</div>
+		</div>
+		<div class='col-sm-12'>
+			
+			<h2 class="w3-center"><font color='red'>Description</font></h2>
+			{{produit.descriptLong}}
+		</div>
+	</div>
+
+</div>
+<br><br><br>
+{% endblock %}
+

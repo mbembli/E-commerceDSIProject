@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin - Tableau de bord</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="navbar navbar-default">
+        <a class="navbar-brand" href="{{ path('admin_homepage')}}">Mohamed Bembli</a>
+        <ul class="nav navbar-nav">
+            <li> <a href="{{ path('admin_homepage')}}">Accueil</a> </li>
+            <li> <a href="{{ path('admin_categorie_index') }}">Catégoies</a> </li>
+            <li> <a href="{{ path('admin_produit_index') }}">Produits</a> </li>
+            <li> <a href="{{ path('admin_avis_index') }}">Avis</a> </li>
+            <li> <a href="{{ path('admin_commande_index') }}">Commandes</a> </li>
+        </ul>
+    </div>
+    
+    {% block body %}
+
+    {% endblock %}
+    
+    
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>

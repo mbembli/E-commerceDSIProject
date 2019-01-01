@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Mohamed Bembli</title>
+</head><!--/head-->
+
+<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+
+    <header id="header"><!--header-->
+        
+        <div class="header-middle"><!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <a href="{{path('homepage')}}"><img src="/images/home/logo.jpg" alt="" width="80px" height="80px" />&nbsp;&nbsp;<b>Mohamed Bembli</b></a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{path('panier_details')}}"><i class="fa fa-shopping-cart"></i> Panier ({{ render(controller('AppBundle:Panier:nbProduits'))}})</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+    </header><!--/header-->
+    
+    
+    
+    {% block body %}
+
+    {% endblock %}
+    
+    <footer id="footer"><!--Footer-->
+
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">Copyright © {{date()|date('Y')}} Mohamed Bembli INC.</p>
+                    <p class="pull-right">Designed by <span><a target="_blank" href="https://www.facebook.com/mbembli">Mohamed Bembli</a></span></p>
+                </div>
+            </div>
+        </div>
+        
+    </footer><!--/Footer-->
+    
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/simple-rating.js"></script>
+</body>
+</html>

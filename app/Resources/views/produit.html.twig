@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						<h2>{{mycat.libelle}}</h2>
+						<div class="panel-group category-products" id="accordian">
+							{{mycat.description}}
+						</div>
+						
+
+						
+						
+					</div>
+				</div>
+				
+				<div class="col-sm-9 padding-right">
+					<div class="style_"><!--features_items-->
+					<h2 class="title text-center">Les produits de la catégorie {{mycat.libelle|e}}</h2>
+						
+						{%for p in produits %}
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="{{p.imagePrin}}" alt="" />
+										<p>{{p.libellle|e}}</p>
+										<p>{{p.descriptCourt|e}}</p>
+										<a href="{{ path('user_produit_details', {'id_produit': p.id}) }}" class="btn btn-default add-to-cart"><i class="glyphicon glyphicon-info-sign"></i>
+											Details
+										</a>
+									</div>									
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div><!--features_items-->
+					
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

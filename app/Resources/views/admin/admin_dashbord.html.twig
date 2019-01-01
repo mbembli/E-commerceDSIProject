@@ -1,0 +1,12 @@
+{% extends 'base2.html.twig' %}
+{% block body %}
+
+<div class="container">
+    <h3>Le nombre total des produits : {{render(controller('AppBundle:Produit:nbsProduits'))}} </h3>
+    <h3>Le nombre total des catégories : {{render(controller('AppBundle:Categorie:nbsCategories'))}} </h3>
+    <h3>Le nombre total des commandes : {{render(controller('AppBundle:Commande:nbsCommandes'))}} </h3>
+    <h3>Le montant total des commandes : {{render(controller('AppBundle:Commande:montantTotalCommandes'))}} TND</h3>
+    <h3>Le nombre total des avis client : {{render(controller('AppBundle:Avis:nbsAvis'))}} </h3>
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>commande_imprimer</title>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<meta charset=utf-8>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<table class="table">
+		<tr>
+			<td width="30px">
+				<img src="/images/home/logo.jpg" alt="Logo" height="70px" width="70px" />
+			</td>
+			<td>
+				<h3>Commande n° {{c.id}}</h3>
+				<h4>Du {{c.date|date('Y-m-d')}}</h4>
+			</td>
+			<td>
+				<h5>{{c.fullname}}</h5>
+				<h5>{{c.email}}</h5>
+				<h5>{{c.adresse}}</h4>
+			</td>
+		</tr>
+	</table>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Produit</th>
+				<th>PU</th>
+				<th>Qté</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			{% for p in list %}
+			<tr>
+				<td>{{p.id}}</td>
+				<td>{{p.produit.descriptCourt}}</td>
+				<td>{{p.prix}}</td>
+				<td>{{p.qte}}</td>
+				<td>
+					{% set foo = p.qte * p.prix %}
+					{{ foo }}
+				</td>
+				</tr>
+			{%endfor%}
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>Total HT</td>
+				<td>{{totalHT}}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>Montant TVA 10%</td>
+				<td>{{totalTVA}}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><strong>Total TTC</strong></td>
+				<td><strong>{{totalFinal}}</strong></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
+
+

@@ -1,0 +1,37 @@
+{% extends "base2.html.twig" %}
+
+{% block body %}
+
+	<div class="container">
+
+		<h1 class="text-center">Liste des commandes</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Client</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="resultat-diporama">
+        {% for c in commandes%}
+        <tr>
+            <td>{{c.id}}</td>
+            <td>{{c.date|date('Y-m-d H:i:s')}}</td>
+            <td>{{c.fullname}}</td>
+
+            <td>
+                <a class="btn btn-primary" href="{{ path('admin_commande_details',{'id_commande': c.id}) }}">
+                    <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimer
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+        
+	</div>
+    {% endblock %}

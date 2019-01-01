@@ -1,0 +1,84 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+					<li><a href="{{ path('homepage')}}">Home</a></li>
+					<li class="active">Panier</li>
+				</ol>
+			</div>
+
+
+
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image">Produit</td>
+							<td class="description">Détails</td>
+							<td class="price">Prix TND</td>
+							<td class="quantity">Quantité</td>
+							<td class="total">Total TND</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						{%for p in produits %}
+						<tr>
+							<td class="cart_product">
+								<a href="{{ path('user_produit_details', {'id_produit': p.id}) }}"><img src="{{p.imagePrin}}" width="100px" alt=""></a>
+							</td>
+							<td class="cart_description">
+								<h4><a href="{{ path('user_produit_details', {'id_produit': p.id}) }}">{{p.descriptCourt|e}}</a></h4>
+								<p>ID: {{p.id|e}}</p>
+							</td>
+							<td class="cart_price">
+								<p>{{p.prix|e}}</p>
+							</td>
+							<td class="cart_quantity">
+							<button type="button" onclick="updateQtePlus({{p.id|e}});" id="plus_1" class="btn btn-secondary">+</button>
+									<input id="qte_1" type="text" value="{{panier[p.id]}}" autocomplete="off" size="2" disabled="">
+								<button type="button" id="moin_1" onclick="updateQteMoin({{p.id|e}});"class="btn btn-secondary">-</button>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price">{{panier[p.id] * p.prix}}</p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" href="{{ path('produit_delete', {'id_produit': p.id}) }}"><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+	</section> <!--/#cart_items-->
+
+	<section id="do_action">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+
+				</div>
+				<div class="col-sm-8">
+					<div class="total_area">
+						<ul>
+							<li>Sous total <span>{{ render(controller('AppBundle:Panier:PanierSomme'))}}</span></li>
+							<li>TVA (10%) <span>{{ render(controller('AppBundle:Panier:TVASomme'))}}</span></li>
+							<li>Frais de transport <span>Gratuit</span></li>
+							<li>Total <span>{{ render(controller('AppBundle:Panier:FinalSomme'))}}</span></li>
+						</ul>
+
+						<a class="btn btn-default update" href="{{ path('clear_panier') }}">Vider le panier</a> 
+
+						<a class="btn btn-default check_out pull-right" href="{{ path('page_commander_index') }}">Valider ma commande</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!--/#do_action-->
+	{% endblock %}

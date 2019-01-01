@@ -1,0 +1,53 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Libellle</th>
+                <td>{{ produit.libellle }}</td>
+            </tr>
+            <tr>
+                <th>Descriptcourt</th>
+                <td>{{ produit.descriptCourt }}</td>
+            </tr>
+            <tr>
+                <th>Descriptlong</th>
+                <td>{{ produit.descriptLong|raw }}</td>
+            </tr>
+            <tr>
+                <th>Imageprin</th>
+                <td><img src='{{ produit.imagePrin }}' width='150px' height='150px'></td>
+            </tr>
+            <tr>
+                <th>Imagessec</th>
+                {% set foo = produit.imagesSec|split('**') %}
+               <td><img src='{{ foo[0] }}' width='150px' height='150px'>&nbsp;<img src='{{ foo[1]}}' width='150px' height='150px'></td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_produit_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_produit_edit', { 'id': produit.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

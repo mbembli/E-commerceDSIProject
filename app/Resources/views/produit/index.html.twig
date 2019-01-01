@@ -1,0 +1,49 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <h1>Produits list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libellle</th>
+                <th>Descriptcourt</th>
+                <th>Descriptlong</th>
+                <th>Imageprin</th>
+                <th>Imagessec</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td><a href="{{ path('admin_produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
+                <td>{{ produit.libellle }}</td>
+                <td>{{ produit.descriptCourt }}</td>
+                <td>{{ produit.descriptLong |raw}}</td>
+                <td><img src='{{ produit.imagePrin }}' width='150px' height='150px'></td>
+                {% set foo = produit.imagesSec|split('**') %}
+               <td><img src='{{ foo[0] }}' width='150px' height='150px'>&nbsp;<img src='{{ foo[1]}}' width='150px' height='150px'></td>
+                <td>{{ produit.prix }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_produit_show', { 'id': produit.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_produit_edit', { 'id': produit.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('admin_produit_new') }}">Create a new produit</a>
+        </li>
+    </ul>
+{% endblock %}

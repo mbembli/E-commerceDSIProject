@@ -1,0 +1,41 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <h1>Avis list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Stars</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for avi in avis %}
+            <tr>
+                <td><a href="{{ path('admin_avis_show', { 'id': avi.id }) }}">{{ avi.id }}</a></td>
+                <td>{{ avi.stars }}</td>
+                <td>{% if avi.time %}{{ avi.time|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_avis_show', { 'id': avi.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_avis_edit', { 'id': avi.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_avis_new') }}">Create a new avi</a>
+        </li>
+    </ul>
+{% endblock %}

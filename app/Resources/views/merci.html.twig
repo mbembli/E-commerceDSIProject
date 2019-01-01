@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+					<li><a href="{{ path('homepage')}}">Home</a></li>
+					<li class="active">Commander</li>
+				</ol>
+			</div><!--/breadcrums-->
+			<div class="step-one">
+				<h2 class="heading">Commande enregistrée</h2>
+			</div>
+
+			<div class="review-payment">
+				<h2>Confirmation</h2>
+				<p> Votre commande N°{{id_comm}} a bien été validée. Elle sera traité dès que nous receverons la preuve du paiement. </p>
+				<br/><br/>
+			</div>
+
+			
+
+		</div>
+	</section> <!--/#cart_items-->
+	{% endblock %}

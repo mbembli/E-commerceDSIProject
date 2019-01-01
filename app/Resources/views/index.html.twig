@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <h2>Présentation</h2>
+                        <div class="panel-group category-products" id="accordian">
+                            Bienvenue au site Mohamed Bembli. Cliquer sur une catégorie pour avoir la liste des produits de cette catégorie. Ensuite ajouter le produit de votre choix au panier et validez votre commande.
+                        </div>
+                    
+
+                        
+                    
+                    </div>
+                </div>
+                
+                <div class="col-sm-9 padding-right">
+                    <div class="features_items"><!--features_items-->
+                        <h2 class="title text-center">Les catégories de produits</h2>
+                        {% for c in categories %}
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="{{c.image}}" alt="" />
+                                            <a href="/products/{{c.id}}" class="btn btn-default add-to-cart">{{c.libelle|e}}</a>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    
+                    </div><!--features_items-->
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
